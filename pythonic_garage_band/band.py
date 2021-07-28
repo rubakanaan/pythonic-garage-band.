@@ -5,12 +5,12 @@ class Band():
     def __init__(self, name, members):
         self.name = name
         self.members = members
+        Band.members_list.append(self)
 
     
     def play_solos(self):
-        Band.solos.append(self.members[0].play_solo())
-        Band.solos.append(self.members[1].play_solo())
-        Band.solos.append(self.members[2].play_solo())
+        for i in self.members:
+            Band.solos.append(i.play_solo())
         print(Band.solos)
         return Band.solos
         
@@ -20,9 +20,9 @@ class Band():
     def __repr__(self):
         return  f'My name is {self.name}.'
 
-    # @classmethod
+    @classmethod
     def to_list(cls):
-        pass
+        return cls.members_list
    
 
 
